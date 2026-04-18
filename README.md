@@ -168,7 +168,7 @@ Generated protocol artifacts are included in this repository:
 
 ## License
 
-Apache-2.0.
+I.S.
 See `LICENSE` and `NOTICE`.
 
 
