@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+title: AxiomMesh SDK
+message: If you use this software, please cite the software release.
+type: software
+authors:
+  - family-names: OneOrigine
+version: 1.0.1
+license: Apache-2.0
+abstract: >-
+  A context-aware, certainty-aware, federated multi-agent SDK composed of
+  EDP, MEP, SAVOIR, and a reference drone runtime.
+keywords:
+  - multi-agent
+  - robotics
+  - drones
+  - context-aware-ai
+  - protocol
+  - certainty

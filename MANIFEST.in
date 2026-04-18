@@ -1,0 +1,11 @@
+include README.md
+include LICENSE
+include NOTICE
+include CHANGELOG.md
+include RELEASE_NOTES.md
+include MEP_SPEC.md
+include MEP_PROTOCOL_SCHEMA.json
+include MEP_METHOD_CATALOG.json
+recursive-include src *.py
+recursive-include tests *.py
+recursive-include tools *.py

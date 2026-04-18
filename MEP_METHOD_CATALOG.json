@@ -1,0 +1,588 @@
+{
+  "protocol": "MEP",
+  "version": "2.0.0",
+  "sdk_version": "1.0.1",
+  "method_count": 44,
+  "categories": {
+    "agents": [
+      "mep.agents"
+    ],
+    "core": [
+      "mep.environment.card",
+      "mep.handshake",
+      "mep.health",
+      "mep.method.describe",
+      "mep.spec",
+      "mep.spec.markdown",
+      "mep.spec.schema"
+    ],
+    "explain": [
+      "mep.why",
+      "mep.why_not"
+    ],
+    "fault": [
+      "mep.fault.clear",
+      "mep.fault.inject",
+      "mep.fault.status"
+    ],
+    "federation": [
+      "mep.federation.card",
+      "mep.federation.environments",
+      "mep.federation.execute_mission",
+      "mep.federation.execute_plan",
+      "mep.federation.execute_task",
+      "mep.federation.mission_graph",
+      "mep.federation.provenance",
+      "mep.federation.provenance.verify",
+      "mep.federation.resolve_plan",
+      "mep.federation.resolve_task",
+      "mep.federation.route",
+      "mep.federation.route_task"
+    ],
+    "mesh": [
+      "mep.knowledge.propagate",
+      "mep.neighborhood"
+    ],
+    "multi-agent": [
+      "mep.multi.assign",
+      "mep.multi.execute",
+      "mep.multi.negotiate",
+      "mep.shared.envelope"
+    ],
+    "multi-context": [
+      "mep.multi.context.envelope",
+      "mep.multi.context.plan"
+    ],
+    "plan": [
+      "mep.mission.preview",
+      "mep.plan"
+    ],
+    "stream": [
+      "mep.replay",
+      "mep.session.poll",
+      "mep.session.subscribe",
+      "mep.session.unsubscribe"
+    ],
+    "trace": [
+      "mep.causal.trace",
+      "mep.provenance.trace",
+      "mep.provenance.verify"
+    ],
+    "world": [
+      "mep.envelope",
+      "mep.execute"
+    ]
+  },
+  "aliases": {
+    "mep.causal.trace": [
+      "mep.trace"
+    ],
+    "mep.envelope": [
+      "mep.world.envelope"
+    ],
+    "mep.environment.card": [
+      "mep.capabilities"
+    ],
+    "mep.federation.environments": [
+      "mep.federation.list"
+    ],
+    "mep.provenance.trace": [
+      "mep.provenance"
+    ],
+    "mep.session.poll": [
+      "mep.session.updates"
+    ]
+  },
+  "methods": [
+    {
+      "method": "mep.agents",
+      "category": "agents",
+      "requires_actor": false,
+      "requires_context": false,
+      "summary": "List agents known to the gateway.",
+      "params": {},
+      "aliases": []
+    },
+    {
+      "method": "mep.causal.trace",
+      "category": "trace",
+      "requires_actor": true,
+      "requires_context": true,
+      "summary": "Return recent causal links.",
+      "params": {
+        "limit": "int?"
+      },
+      "aliases": [
+        "mep.trace"
+      ]
+    },
+    {
+      "method": "mep.envelope",
+      "category": "world",
+      "requires_actor": true,
+      "requires_context": true,
+      "summary": "Build a single-agent envelope.",
+      "params": {
+        "session_id": "string?",
+        "knowledge_prefix": "string?"
+      },
+      "aliases": [
+        "mep.world.envelope"
+      ]
+    },
+    {
+      "method": "mep.environment.card",
+      "category": "core",
+      "requires_actor": false,
+      "requires_context": false,
+      "summary": "Describe the environment capability surface.",
+      "params": {},
+      "aliases": [
+        "mep.capabilities"
+      ]
+    },
+    {
+      "method": "mep.execute",
+      "category": "world",
+      "requires_actor": true,
+      "requires_context": true,
+      "summary": "Validate and execute a decision.",
+      "params": {
+        "decision": "object"
+      },
+      "aliases": []
+    },
+    {
+      "method": "mep.fault.clear",
+      "category": "fault",
+      "requires_actor": false,
+      "requires_context": false,
+      "summary": "Clear synthetic faults by optional scope/target.",
+      "params": {
+        "scope": "string?",
+        "target": "string?"
+      },
+      "aliases": []
+    },
+    {
+      "method": "mep.fault.inject",
+      "category": "fault",
+      "requires_actor": false,
+      "requires_context": false,
+      "summary": "Inject a synthetic fault into an action, task, route, or environment.",
+      "params": {
+        "scope": "string",
+        "target": "string",
+        "count": "int?",
+        "message": "string?",
+        "metadata": "object?"
+      },
+      "aliases": []
+    },
+    {
+      "method": "mep.fault.status",
+      "category": "fault",
+      "requires_actor": false,
+      "requires_context": false,
+      "summary": "Return active synthetic faults and recovery counters.",
+      "params": {},
+      "aliases": []
+    },
+    {
+      "method": "mep.federation.card",
+      "category": "federation",
+      "requires_actor": false,
+      "requires_context": false,
+      "summary": "Describe the federation.",
+      "params": {},
+      "aliases": []
+    },
+    {
+      "method": "mep.federation.environments",
+      "category": "federation",
+      "requires_actor": false,
+      "requires_context": false,
+      "summary": "List federated environments.",
+      "params": {},
+      "aliases": [
+        "mep.federation.list"
+      ]
+    },
+    {
+      "method": "mep.federation.execute_mission",
+      "category": "federation",
+      "requires_actor": false,
+      "requires_context": false,
+      "summary": "Execute a federated mission graph stage by stage.",
+      "params": {
+        "tasks": "list"
+      },
+      "aliases": []
+    },
+    {
+      "method": "mep.federation.execute_plan",
+      "category": "federation",
+      "requires_actor": false,
+      "requires_context": false,
+      "summary": "Execute a resolved batch across environments.",
+      "params": {
+        "tasks": "list"
+      },
+      "aliases": []
+    },
+    {
+      "method": "mep.federation.execute_task",
+      "category": "federation",
+      "requires_actor": false,
+      "requires_context": false,
+      "summary": "Execute one task on the selected environment.",
+      "params": {
+        "task": "object"
+      },
+      "aliases": []
+    },
+    {
+      "method": "mep.federation.mission_graph",
+      "category": "federation",
+      "requires_actor": false,
+      "requires_context": false,
+      "summary": "Build a federated mission graph.",
+      "params": {
+        "tasks": "list"
+      },
+      "aliases": []
+    },
+    {
+      "method": "mep.federation.provenance",
+      "category": "federation",
+      "requires_actor": false,
+      "requires_context": false,
+      "summary": "Aggregate provenance across environments.",
+      "params": {
+        "limit": "int?"
+      },
+      "aliases": []
+    },
+    {
+      "method": "mep.federation.provenance.verify",
+      "category": "federation",
+      "requires_actor": false,
+      "requires_context": false,
+      "summary": "Verify provenance chains across environments.",
+      "params": {},
+      "aliases": []
+    },
+    {
+      "method": "mep.federation.resolve_plan",
+      "category": "federation",
+      "requires_actor": false,
+      "requires_context": false,
+      "summary": "Resolve a task batch into per-environment groups.",
+      "params": {
+        "tasks": "list"
+      },
+      "aliases": []
+    },
+    {
+      "method": "mep.federation.resolve_task",
+      "category": "federation",
+      "requires_actor": false,
+      "requires_context": false,
+      "summary": "Resolve a task to an environment.",
+      "params": {
+        "task": "object"
+      },
+      "aliases": []
+    },
+    {
+      "method": "mep.federation.route",
+      "category": "federation",
+      "requires_actor": false,
+      "requires_context": false,
+      "summary": "Forward an arbitrary JSON-RPC call to another environment.",
+      "params": {
+        "environment_id": "string",
+        "forward_method": "string",
+        "forward_params": "object?"
+      },
+      "aliases": []
+    },
+    {
+      "method": "mep.federation.route_task",
+      "category": "federation",
+      "requires_actor": false,
+      "requires_context": false,
+      "summary": "Resolve and route a task method.",
+      "params": {
+        "task": "object"
+      },
+      "aliases": []
+    },
+    {
+      "method": "mep.handshake",
+      "category": "core",
+      "requires_actor": false,
+      "requires_context": false,
+      "summary": "Open a stateful MEP session and return capability/environment cards.",
+      "params": {
+        "client_id": "string"
+      },
+      "aliases": []
+    },
+    {
+      "method": "mep.health",
+      "category": "core",
+      "requires_actor": false,
+      "requires_context": false,
+      "summary": "Return runtime health, counters, provenance integrity, and federation status.",
+      "params": {},
+      "aliases": []
+    },
+    {
+      "method": "mep.knowledge.propagate",
+      "category": "mesh",
+      "requires_actor": true,
+      "requires_context": true,
+      "summary": "Propagate a fact through mesh edges by channel/hops.",
+      "params": {
+        "key": "string",
+        "channels": "list?",
+        "max_hops": "int?"
+      },
+      "aliases": []
+    },
+    {
+      "method": "mep.method.describe",
+      "category": "core",
+      "requires_actor": false,
+      "requires_context": false,
+      "summary": "Describe one method, including alias/deprecation metadata if relevant.",
+      "params": {
+        "method": "string"
+      },
+      "aliases": []
+    },
+    {
+      "method": "mep.mission.preview",
+      "category": "plan",
+      "requires_actor": true,
+      "requires_context": true,
+      "summary": "Preview a mission plan over objectives.",
+      "params": {
+        "mission_objectives": "list"
+      },
+      "aliases": []
+    },
+    {
+      "method": "mep.multi.assign",
+      "category": "multi-agent",
+      "requires_actor": false,
+      "requires_context": false,
+      "summary": "Allocate tasks across agents and dependency layers.",
+      "params": {
+        "bindings": "list",
+        "tasks": "list"
+      },
+      "aliases": []
+    },
+    {
+      "method": "mep.multi.context.envelope",
+      "category": "multi-context",
+      "requires_actor": false,
+      "requires_context": false,
+      "summary": "Build a multi-context envelope from explicit bindings.",
+      "params": {
+        "bindings": "list"
+      },
+      "aliases": []
+    },
+    {
+      "method": "mep.multi.context.plan",
+      "category": "multi-context",
+      "requires_actor": false,
+      "requires_context": false,
+      "summary": "Preview a coordinated plan over multiple contexts.",
+      "params": {
+        "bindings": "list",
+        "goal": "sense"
+      },
+      "aliases": []
+    },
+    {
+      "method": "mep.multi.execute",
+      "category": "multi-agent",
+      "requires_actor": false,
+      "requires_context": false,
+      "summary": "Execute a cooperative task set.",
+      "params": {
+        "bindings": "list",
+        "tasks": "list"
+      },
+      "aliases": []
+    },
+    {
+      "method": "mep.multi.negotiate",
+      "category": "multi-agent",
+      "requires_actor": false,
+      "requires_context": false,
+      "summary": "Negotiate task ownership across agents.",
+      "params": {
+        "bindings": "list",
+        "task": "object"
+      },
+      "aliases": []
+    },
+    {
+      "method": "mep.neighborhood",
+      "category": "mesh",
+      "requires_actor": true,
+      "requires_context": true,
+      "summary": "Return neighbor visibility from the shared knowledge mesh.",
+      "params": {
+        "knowledge_prefix": "string?"
+      },
+      "aliases": []
+    },
+    {
+      "method": "mep.plan",
+      "category": "plan",
+      "requires_actor": true,
+      "requires_context": true,
+      "summary": "Preview a local action sequence toward a goal.",
+      "params": {
+        "goal": "sense"
+      },
+      "aliases": []
+    },
+    {
+      "method": "mep.provenance.trace",
+      "category": "trace",
+      "requires_actor": true,
+      "requires_context": true,
+      "summary": "Return provenance records.",
+      "params": {
+        "limit": "int?"
+      },
+      "aliases": [
+        "mep.provenance"
+      ]
+    },
+    {
+      "method": "mep.provenance.verify",
+      "category": "trace",
+      "requires_actor": true,
+      "requires_context": true,
+      "summary": "Verify the local provenance chain.",
+      "params": {},
+      "aliases": []
+    },
+    {
+      "method": "mep.replay",
+      "category": "stream",
+      "requires_actor": false,
+      "requires_context": false,
+      "summary": "Return a replay window over events, reactions, and knowledge deltas.",
+      "params": {
+        "from_event_index": "int"
+      },
+      "aliases": []
+    },
+    {
+      "method": "mep.session.poll",
+      "category": "stream",
+      "requires_actor": false,
+      "requires_context": false,
+      "summary": "Poll queued stream packets for a session.",
+      "params": {
+        "session_id": "string"
+      },
+      "aliases": [
+        "mep.session.updates"
+      ]
+    },
+    {
+      "method": "mep.session.subscribe",
+      "category": "stream",
+      "requires_actor": false,
+      "requires_context": false,
+      "summary": "Subscribe a session to a delta/event channel.",
+      "params": {
+        "session_id": "string",
+        "channel": "string"
+      },
+      "aliases": []
+    },
+    {
+      "method": "mep.session.unsubscribe",
+      "category": "stream",
+      "requires_actor": false,
+      "requires_context": false,
+      "summary": "Remove a session subscription.",
+      "params": {
+        "session_id": "string",
+        "channel": "string"
+      },
+      "aliases": []
+    },
+    {
+      "method": "mep.shared.envelope",
+      "category": "multi-agent",
+      "requires_actor": false,
+      "requires_context": true,
+      "summary": "Build a shared-context multi-agent envelope.",
+      "params": {
+        "actor_ids": "list?"
+      },
+      "aliases": []
+    },
+    {
+      "method": "mep.spec",
+      "category": "core",
+      "requires_actor": false,
+      "requires_context": false,
+      "summary": "Return the protocol method registry and versioned beta surface.",
+      "params": {},
+      "aliases": []
+    },
+    {
+      "method": "mep.spec.markdown",
+      "category": "core",
+      "requires_actor": false,
+      "requires_context": false,
+      "summary": "Return a markdown rendering of the public MEP method catalog.",
+      "params": {},
+      "aliases": []
+    },
+    {
+      "method": "mep.spec.schema",
+      "category": "core",
+      "requires_actor": false,
+      "requires_context": false,
+      "summary": "Return JSON-schema-like request contracts for the protocol surface.",
+      "params": {},
+      "aliases": []
+    },
+    {
+      "method": "mep.why",
+      "category": "explain",
+      "requires_actor": true,
+      "requires_context": true,
+      "summary": "Explain why an action is available.",
+      "params": {
+        "action_type": "string"
+      },
+      "aliases": []
+    },
+    {
+      "method": "mep.why_not",
+      "category": "explain",
+      "requires_actor": true,
+      "requires_context": true,
+      "summary": "Explain why an action is blocked or degraded.",
+      "params": {
+        "action_type": "string"
+      },
+      "aliases": []
+    }
+  ]
+}

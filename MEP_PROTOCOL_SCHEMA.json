@@ -1,0 +1,2109 @@
+{
+  "protocol": "MEP",
+  "version": "2.0.0",
+  "sdk_version": "1.0.1",
+  "method_count": 44,
+  "deprecated_aliases": {
+    "mep.capabilities": "mep.environment.card",
+    "mep.world.envelope": "mep.envelope",
+    "mep.session.updates": "mep.session.poll",
+    "mep.trace": "mep.causal.trace",
+    "mep.provenance": "mep.provenance.trace",
+    "mep.federation.list": "mep.federation.environments"
+  },
+  "methods": {
+    "mep.agents": {
+      "summary": "List agents known to the gateway.",
+      "category": "agents",
+      "requires_actor": false,
+      "requires_context": false,
+      "aliases": [],
+      "request_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "jsonrpc": {
+            "const": "2.0"
+          },
+          "method": {
+            "enum": [
+              "mep.agents"
+            ]
+          },
+          "params": {
+            "type": "object",
+            "properties": {},
+            "required": [],
+            "additionalProperties": true
+          },
+          "id": {
+            "type": [
+              "string",
+              "integer",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "jsonrpc",
+          "method",
+          "params"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "mep.causal.trace": {
+      "summary": "Return recent causal links.",
+      "category": "trace",
+      "requires_actor": true,
+      "requires_context": true,
+      "aliases": [
+        "mep.trace"
+      ],
+      "request_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "jsonrpc": {
+            "const": "2.0"
+          },
+          "method": {
+            "enum": [
+              "mep.causal.trace",
+              "mep.trace"
+            ]
+          },
+          "params": {
+            "type": "object",
+            "properties": {
+              "limit": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              }
+            },
+            "required": [],
+            "additionalProperties": true
+          },
+          "id": {
+            "type": [
+              "string",
+              "integer",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "jsonrpc",
+          "method",
+          "params"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "mep.envelope": {
+      "summary": "Build a single-agent envelope.",
+      "category": "world",
+      "requires_actor": true,
+      "requires_context": true,
+      "aliases": [
+        "mep.world.envelope"
+      ],
+      "request_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "jsonrpc": {
+            "const": "2.0"
+          },
+          "method": {
+            "enum": [
+              "mep.envelope",
+              "mep.world.envelope"
+            ]
+          },
+          "params": {
+            "type": "object",
+            "properties": {
+              "session_id": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "knowledge_prefix": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [],
+            "additionalProperties": true
+          },
+          "id": {
+            "type": [
+              "string",
+              "integer",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "jsonrpc",
+          "method",
+          "params"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "mep.environment.card": {
+      "summary": "Describe the environment capability surface.",
+      "category": "core",
+      "requires_actor": false,
+      "requires_context": false,
+      "aliases": [
+        "mep.capabilities"
+      ],
+      "request_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "jsonrpc": {
+            "const": "2.0"
+          },
+          "method": {
+            "enum": [
+              "mep.environment.card",
+              "mep.capabilities"
+            ]
+          },
+          "params": {
+            "type": "object",
+            "properties": {},
+            "required": [],
+            "additionalProperties": true
+          },
+          "id": {
+            "type": [
+              "string",
+              "integer",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "jsonrpc",
+          "method",
+          "params"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "mep.execute": {
+      "summary": "Validate and execute a decision.",
+      "category": "world",
+      "requires_actor": true,
+      "requires_context": true,
+      "aliases": [],
+      "request_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "jsonrpc": {
+            "const": "2.0"
+          },
+          "method": {
+            "enum": [
+              "mep.execute"
+            ]
+          },
+          "params": {
+            "type": "object",
+            "properties": {
+              "decision": {
+                "type": "object"
+              }
+            },
+            "required": [
+              "decision"
+            ],
+            "additionalProperties": true
+          },
+          "id": {
+            "type": [
+              "string",
+              "integer",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "jsonrpc",
+          "method",
+          "params"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "mep.fault.clear": {
+      "summary": "Clear synthetic faults by optional scope/target.",
+      "category": "fault",
+      "requires_actor": false,
+      "requires_context": false,
+      "aliases": [],
+      "request_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "jsonrpc": {
+            "const": "2.0"
+          },
+          "method": {
+            "enum": [
+              "mep.fault.clear"
+            ]
+          },
+          "params": {
+            "type": "object",
+            "properties": {
+              "scope": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "target": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [],
+            "additionalProperties": true
+          },
+          "id": {
+            "type": [
+              "string",
+              "integer",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "jsonrpc",
+          "method",
+          "params"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "mep.fault.inject": {
+      "summary": "Inject a synthetic fault into an action, task, route, or environment.",
+      "category": "fault",
+      "requires_actor": false,
+      "requires_context": false,
+      "aliases": [],
+      "request_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "jsonrpc": {
+            "const": "2.0"
+          },
+          "method": {
+            "enum": [
+              "mep.fault.inject"
+            ]
+          },
+          "params": {
+            "type": "object",
+            "properties": {
+              "scope": {
+                "type": "string"
+              },
+              "target": {
+                "type": "string"
+              },
+              "count": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "message": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "metadata": {
+                "type": [
+                  "object",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "scope",
+              "target"
+            ],
+            "additionalProperties": true
+          },
+          "id": {
+            "type": [
+              "string",
+              "integer",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "jsonrpc",
+          "method",
+          "params"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "mep.fault.status": {
+      "summary": "Return active synthetic faults and recovery counters.",
+      "category": "fault",
+      "requires_actor": false,
+      "requires_context": false,
+      "aliases": [],
+      "request_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "jsonrpc": {
+            "const": "2.0"
+          },
+          "method": {
+            "enum": [
+              "mep.fault.status"
+            ]
+          },
+          "params": {
+            "type": "object",
+            "properties": {},
+            "required": [],
+            "additionalProperties": true
+          },
+          "id": {
+            "type": [
+              "string",
+              "integer",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "jsonrpc",
+          "method",
+          "params"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "mep.federation.card": {
+      "summary": "Describe the federation.",
+      "category": "federation",
+      "requires_actor": false,
+      "requires_context": false,
+      "aliases": [],
+      "request_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "jsonrpc": {
+            "const": "2.0"
+          },
+          "method": {
+            "enum": [
+              "mep.federation.card"
+            ]
+          },
+          "params": {
+            "type": "object",
+            "properties": {},
+            "required": [],
+            "additionalProperties": true
+          },
+          "id": {
+            "type": [
+              "string",
+              "integer",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "jsonrpc",
+          "method",
+          "params"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "mep.federation.environments": {
+      "summary": "List federated environments.",
+      "category": "federation",
+      "requires_actor": false,
+      "requires_context": false,
+      "aliases": [
+        "mep.federation.list"
+      ],
+      "request_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "jsonrpc": {
+            "const": "2.0"
+          },
+          "method": {
+            "enum": [
+              "mep.federation.environments",
+              "mep.federation.list"
+            ]
+          },
+          "params": {
+            "type": "object",
+            "properties": {},
+            "required": [],
+            "additionalProperties": true
+          },
+          "id": {
+            "type": [
+              "string",
+              "integer",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "jsonrpc",
+          "method",
+          "params"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "mep.federation.execute_mission": {
+      "summary": "Execute a federated mission graph stage by stage.",
+      "category": "federation",
+      "requires_actor": false,
+      "requires_context": false,
+      "aliases": [],
+      "request_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "jsonrpc": {
+            "const": "2.0"
+          },
+          "method": {
+            "enum": [
+              "mep.federation.execute_mission"
+            ]
+          },
+          "params": {
+            "type": "object",
+            "properties": {
+              "tasks": {
+                "type": "array"
+              }
+            },
+            "required": [
+              "tasks"
+            ],
+            "additionalProperties": true
+          },
+          "id": {
+            "type": [
+              "string",
+              "integer",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "jsonrpc",
+          "method",
+          "params"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "mep.federation.execute_plan": {
+      "summary": "Execute a resolved batch across environments.",
+      "category": "federation",
+      "requires_actor": false,
+      "requires_context": false,
+      "aliases": [],
+      "request_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "jsonrpc": {
+            "const": "2.0"
+          },
+          "method": {
+            "enum": [
+              "mep.federation.execute_plan"
+            ]
+          },
+          "params": {
+            "type": "object",
+            "properties": {
+              "tasks": {
+                "type": "array"
+              }
+            },
+            "required": [
+              "tasks"
+            ],
+            "additionalProperties": true
+          },
+          "id": {
+            "type": [
+              "string",
+              "integer",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "jsonrpc",
+          "method",
+          "params"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "mep.federation.execute_task": {
+      "summary": "Execute one task on the selected environment.",
+      "category": "federation",
+      "requires_actor": false,
+      "requires_context": false,
+      "aliases": [],
+      "request_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "jsonrpc": {
+            "const": "2.0"
+          },
+          "method": {
+            "enum": [
+              "mep.federation.execute_task"
+            ]
+          },
+          "params": {
+            "type": "object",
+            "properties": {
+              "task": {
+                "type": "object"
+              }
+            },
+            "required": [
+              "task"
+            ],
+            "additionalProperties": true
+          },
+          "id": {
+            "type": [
+              "string",
+              "integer",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "jsonrpc",
+          "method",
+          "params"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "mep.federation.mission_graph": {
+      "summary": "Build a federated mission graph.",
+      "category": "federation",
+      "requires_actor": false,
+      "requires_context": false,
+      "aliases": [],
+      "request_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "jsonrpc": {
+            "const": "2.0"
+          },
+          "method": {
+            "enum": [
+              "mep.federation.mission_graph"
+            ]
+          },
+          "params": {
+            "type": "object",
+            "properties": {
+              "tasks": {
+                "type": "array"
+              }
+            },
+            "required": [
+              "tasks"
+            ],
+            "additionalProperties": true
+          },
+          "id": {
+            "type": [
+              "string",
+              "integer",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "jsonrpc",
+          "method",
+          "params"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "mep.federation.provenance": {
+      "summary": "Aggregate provenance across environments.",
+      "category": "federation",
+      "requires_actor": false,
+      "requires_context": false,
+      "aliases": [],
+      "request_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "jsonrpc": {
+            "const": "2.0"
+          },
+          "method": {
+            "enum": [
+              "mep.federation.provenance"
+            ]
+          },
+          "params": {
+            "type": "object",
+            "properties": {
+              "limit": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              }
+            },
+            "required": [],
+            "additionalProperties": true
+          },
+          "id": {
+            "type": [
+              "string",
+              "integer",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "jsonrpc",
+          "method",
+          "params"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "mep.federation.provenance.verify": {
+      "summary": "Verify provenance chains across environments.",
+      "category": "federation",
+      "requires_actor": false,
+      "requires_context": false,
+      "aliases": [],
+      "request_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "jsonrpc": {
+            "const": "2.0"
+          },
+          "method": {
+            "enum": [
+              "mep.federation.provenance.verify"
+            ]
+          },
+          "params": {
+            "type": "object",
+            "properties": {},
+            "required": [],
+            "additionalProperties": true
+          },
+          "id": {
+            "type": [
+              "string",
+              "integer",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "jsonrpc",
+          "method",
+          "params"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "mep.federation.resolve_plan": {
+      "summary": "Resolve a task batch into per-environment groups.",
+      "category": "federation",
+      "requires_actor": false,
+      "requires_context": false,
+      "aliases": [],
+      "request_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "jsonrpc": {
+            "const": "2.0"
+          },
+          "method": {
+            "enum": [
+              "mep.federation.resolve_plan"
+            ]
+          },
+          "params": {
+            "type": "object",
+            "properties": {
+              "tasks": {
+                "type": "array"
+              }
+            },
+            "required": [
+              "tasks"
+            ],
+            "additionalProperties": true
+          },
+          "id": {
+            "type": [
+              "string",
+              "integer",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "jsonrpc",
+          "method",
+          "params"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "mep.federation.resolve_task": {
+      "summary": "Resolve a task to an environment.",
+      "category": "federation",
+      "requires_actor": false,
+      "requires_context": false,
+      "aliases": [],
+      "request_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "jsonrpc": {
+            "const": "2.0"
+          },
+          "method": {
+            "enum": [
+              "mep.federation.resolve_task"
+            ]
+          },
+          "params": {
+            "type": "object",
+            "properties": {
+              "task": {
+                "type": "object"
+              }
+            },
+            "required": [
+              "task"
+            ],
+            "additionalProperties": true
+          },
+          "id": {
+            "type": [
+              "string",
+              "integer",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "jsonrpc",
+          "method",
+          "params"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "mep.federation.route": {
+      "summary": "Forward an arbitrary JSON-RPC call to another environment.",
+      "category": "federation",
+      "requires_actor": false,
+      "requires_context": false,
+      "aliases": [],
+      "request_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "jsonrpc": {
+            "const": "2.0"
+          },
+          "method": {
+            "enum": [
+              "mep.federation.route"
+            ]
+          },
+          "params": {
+            "type": "object",
+            "properties": {
+              "environment_id": {
+                "type": "string"
+              },
+              "forward_method": {
+                "type": "string"
+              },
+              "forward_params": {
+                "type": [
+                  "object",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "environment_id",
+              "forward_method"
+            ],
+            "additionalProperties": true
+          },
+          "id": {
+            "type": [
+              "string",
+              "integer",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "jsonrpc",
+          "method",
+          "params"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "mep.federation.route_task": {
+      "summary": "Resolve and route a task method.",
+      "category": "federation",
+      "requires_actor": false,
+      "requires_context": false,
+      "aliases": [],
+      "request_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "jsonrpc": {
+            "const": "2.0"
+          },
+          "method": {
+            "enum": [
+              "mep.federation.route_task"
+            ]
+          },
+          "params": {
+            "type": "object",
+            "properties": {
+              "task": {
+                "type": "object"
+              }
+            },
+            "required": [
+              "task"
+            ],
+            "additionalProperties": true
+          },
+          "id": {
+            "type": [
+              "string",
+              "integer",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "jsonrpc",
+          "method",
+          "params"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "mep.handshake": {
+      "summary": "Open a stateful MEP session and return capability/environment cards.",
+      "category": "core",
+      "requires_actor": false,
+      "requires_context": false,
+      "aliases": [],
+      "request_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "jsonrpc": {
+            "const": "2.0"
+          },
+          "method": {
+            "enum": [
+              "mep.handshake"
+            ]
+          },
+          "params": {
+            "type": "object",
+            "properties": {
+              "client_id": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "client_id"
+            ],
+            "additionalProperties": true
+          },
+          "id": {
+            "type": [
+              "string",
+              "integer",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "jsonrpc",
+          "method",
+          "params"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "mep.health": {
+      "summary": "Return runtime health, counters, provenance integrity, and federation status.",
+      "category": "core",
+      "requires_actor": false,
+      "requires_context": false,
+      "aliases": [],
+      "request_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "jsonrpc": {
+            "const": "2.0"
+          },
+          "method": {
+            "enum": [
+              "mep.health"
+            ]
+          },
+          "params": {
+            "type": "object",
+            "properties": {},
+            "required": [],
+            "additionalProperties": true
+          },
+          "id": {
+            "type": [
+              "string",
+              "integer",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "jsonrpc",
+          "method",
+          "params"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "mep.knowledge.propagate": {
+      "summary": "Propagate a fact through mesh edges by channel/hops.",
+      "category": "mesh",
+      "requires_actor": true,
+      "requires_context": true,
+      "aliases": [],
+      "request_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "jsonrpc": {
+            "const": "2.0"
+          },
+          "method": {
+            "enum": [
+              "mep.knowledge.propagate"
+            ]
+          },
+          "params": {
+            "type": "object",
+            "properties": {
+              "key": {
+                "type": "string"
+              },
+              "channels": {
+                "type": [
+                  "array",
+                  "null"
+                ]
+              },
+              "max_hops": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "key"
+            ],
+            "additionalProperties": true
+          },
+          "id": {
+            "type": [
+              "string",
+              "integer",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "jsonrpc",
+          "method",
+          "params"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "mep.method.describe": {
+      "summary": "Describe one method, including alias/deprecation metadata if relevant.",
+      "category": "core",
+      "requires_actor": false,
+      "requires_context": false,
+      "aliases": [],
+      "request_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "jsonrpc": {
+            "const": "2.0"
+          },
+          "method": {
+            "enum": [
+              "mep.method.describe"
+            ]
+          },
+          "params": {
+            "type": "object",
+            "properties": {
+              "method": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "method"
+            ],
+            "additionalProperties": true
+          },
+          "id": {
+            "type": [
+              "string",
+              "integer",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "jsonrpc",
+          "method",
+          "params"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "mep.mission.preview": {
+      "summary": "Preview a mission plan over objectives.",
+      "category": "plan",
+      "requires_actor": true,
+      "requires_context": true,
+      "aliases": [],
+      "request_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "jsonrpc": {
+            "const": "2.0"
+          },
+          "method": {
+            "enum": [
+              "mep.mission.preview"
+            ]
+          },
+          "params": {
+            "type": "object",
+            "properties": {
+              "mission_objectives": {
+                "type": "array"
+              }
+            },
+            "required": [
+              "mission_objectives"
+            ],
+            "additionalProperties": true
+          },
+          "id": {
+            "type": [
+              "string",
+              "integer",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "jsonrpc",
+          "method",
+          "params"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "mep.multi.assign": {
+      "summary": "Allocate tasks across agents and dependency layers.",
+      "category": "multi-agent",
+      "requires_actor": false,
+      "requires_context": false,
+      "aliases": [],
+      "request_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "jsonrpc": {
+            "const": "2.0"
+          },
+          "method": {
+            "enum": [
+              "mep.multi.assign"
+            ]
+          },
+          "params": {
+            "type": "object",
+            "properties": {
+              "bindings": {
+                "type": "array"
+              },
+              "tasks": {
+                "type": "array"
+              }
+            },
+            "required": [
+              "bindings",
+              "tasks"
+            ],
+            "additionalProperties": true
+          },
+          "id": {
+            "type": [
+              "string",
+              "integer",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "jsonrpc",
+          "method",
+          "params"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "mep.multi.context.envelope": {
+      "summary": "Build a multi-context envelope from explicit bindings.",
+      "category": "multi-context",
+      "requires_actor": false,
+      "requires_context": false,
+      "aliases": [],
+      "request_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "jsonrpc": {
+            "const": "2.0"
+          },
+          "method": {
+            "enum": [
+              "mep.multi.context.envelope"
+            ]
+          },
+          "params": {
+            "type": "object",
+            "properties": {
+              "bindings": {
+                "type": "array"
+              }
+            },
+            "required": [
+              "bindings"
+            ],
+            "additionalProperties": true
+          },
+          "id": {
+            "type": [
+              "string",
+              "integer",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "jsonrpc",
+          "method",
+          "params"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "mep.multi.context.plan": {
+      "summary": "Preview a coordinated plan over multiple contexts.",
+      "category": "multi-context",
+      "requires_actor": false,
+      "requires_context": false,
+      "aliases": [],
+      "request_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "jsonrpc": {
+            "const": "2.0"
+          },
+          "method": {
+            "enum": [
+              "mep.multi.context.plan"
+            ]
+          },
+          "params": {
+            "type": "object",
+            "properties": {
+              "bindings": {
+                "type": "array"
+              },
+              "goal": {
+                "type": "object",
+                "properties": {
+                  "dimension": {
+                    "type": "string"
+                  },
+                  "meaning": {
+                    "type": "string"
+                  },
+                  "magnitude": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "dimension",
+                  "meaning"
+                ]
+              }
+            },
+            "required": [
+              "bindings",
+              "goal"
+            ],
+            "additionalProperties": true
+          },
+          "id": {
+            "type": [
+              "string",
+              "integer",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "jsonrpc",
+          "method",
+          "params"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "mep.multi.execute": {
+      "summary": "Execute a cooperative task set.",
+      "category": "multi-agent",
+      "requires_actor": false,
+      "requires_context": false,
+      "aliases": [],
+      "request_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "jsonrpc": {
+            "const": "2.0"
+          },
+          "method": {
+            "enum": [
+              "mep.multi.execute"
+            ]
+          },
+          "params": {
+            "type": "object",
+            "properties": {
+              "bindings": {
+                "type": "array"
+              },
+              "tasks": {
+                "type": "array"
+              }
+            },
+            "required": [
+              "bindings",
+              "tasks"
+            ],
+            "additionalProperties": true
+          },
+          "id": {
+            "type": [
+              "string",
+              "integer",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "jsonrpc",
+          "method",
+          "params"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "mep.multi.negotiate": {
+      "summary": "Negotiate task ownership across agents.",
+      "category": "multi-agent",
+      "requires_actor": false,
+      "requires_context": false,
+      "aliases": [],
+      "request_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "jsonrpc": {
+            "const": "2.0"
+          },
+          "method": {
+            "enum": [
+              "mep.multi.negotiate"
+            ]
+          },
+          "params": {
+            "type": "object",
+            "properties": {
+              "bindings": {
+                "type": "array"
+              },
+              "task": {
+                "type": "object"
+              }
+            },
+            "required": [
+              "bindings",
+              "task"
+            ],
+            "additionalProperties": true
+          },
+          "id": {
+            "type": [
+              "string",
+              "integer",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "jsonrpc",
+          "method",
+          "params"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "mep.neighborhood": {
+      "summary": "Return neighbor visibility from the shared knowledge mesh.",
+      "category": "mesh",
+      "requires_actor": true,
+      "requires_context": true,
+      "aliases": [],
+      "request_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "jsonrpc": {
+            "const": "2.0"
+          },
+          "method": {
+            "enum": [
+              "mep.neighborhood"
+            ]
+          },
+          "params": {
+            "type": "object",
+            "properties": {
+              "knowledge_prefix": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [],
+            "additionalProperties": true
+          },
+          "id": {
+            "type": [
+              "string",
+              "integer",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "jsonrpc",
+          "method",
+          "params"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "mep.plan": {
+      "summary": "Preview a local action sequence toward a goal.",
+      "category": "plan",
+      "requires_actor": true,
+      "requires_context": true,
+      "aliases": [],
+      "request_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "jsonrpc": {
+            "const": "2.0"
+          },
+          "method": {
+            "enum": [
+              "mep.plan"
+            ]
+          },
+          "params": {
+            "type": "object",
+            "properties": {
+              "goal": {
+                "type": "object",
+                "properties": {
+                  "dimension": {
+                    "type": "string"
+                  },
+                  "meaning": {
+                    "type": "string"
+                  },
+                  "magnitude": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "dimension",
+                  "meaning"
+                ]
+              }
+            },
+            "required": [
+              "goal"
+            ],
+            "additionalProperties": true
+          },
+          "id": {
+            "type": [
+              "string",
+              "integer",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "jsonrpc",
+          "method",
+          "params"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "mep.provenance.trace": {
+      "summary": "Return provenance records.",
+      "category": "trace",
+      "requires_actor": true,
+      "requires_context": true,
+      "aliases": [
+        "mep.provenance"
+      ],
+      "request_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "jsonrpc": {
+            "const": "2.0"
+          },
+          "method": {
+            "enum": [
+              "mep.provenance.trace",
+              "mep.provenance"
+            ]
+          },
+          "params": {
+            "type": "object",
+            "properties": {
+              "limit": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              }
+            },
+            "required": [],
+            "additionalProperties": true
+          },
+          "id": {
+            "type": [
+              "string",
+              "integer",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "jsonrpc",
+          "method",
+          "params"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "mep.provenance.verify": {
+      "summary": "Verify the local provenance chain.",
+      "category": "trace",
+      "requires_actor": true,
+      "requires_context": true,
+      "aliases": [],
+      "request_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "jsonrpc": {
+            "const": "2.0"
+          },
+          "method": {
+            "enum": [
+              "mep.provenance.verify"
+            ]
+          },
+          "params": {
+            "type": "object",
+            "properties": {},
+            "required": [],
+            "additionalProperties": true
+          },
+          "id": {
+            "type": [
+              "string",
+              "integer",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "jsonrpc",
+          "method",
+          "params"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "mep.replay": {
+      "summary": "Return a replay window over events, reactions, and knowledge deltas.",
+      "category": "stream",
+      "requires_actor": false,
+      "requires_context": false,
+      "aliases": [],
+      "request_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "jsonrpc": {
+            "const": "2.0"
+          },
+          "method": {
+            "enum": [
+              "mep.replay"
+            ]
+          },
+          "params": {
+            "type": "object",
+            "properties": {
+              "from_event_index": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "from_event_index"
+            ],
+            "additionalProperties": true
+          },
+          "id": {
+            "type": [
+              "string",
+              "integer",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "jsonrpc",
+          "method",
+          "params"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "mep.session.poll": {
+      "summary": "Poll queued stream packets for a session.",
+      "category": "stream",
+      "requires_actor": false,
+      "requires_context": false,
+      "aliases": [
+        "mep.session.updates"
+      ],
+      "request_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "jsonrpc": {
+            "const": "2.0"
+          },
+          "method": {
+            "enum": [
+              "mep.session.poll",
+              "mep.session.updates"
+            ]
+          },
+          "params": {
+            "type": "object",
+            "properties": {
+              "session_id": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "session_id"
+            ],
+            "additionalProperties": true
+          },
+          "id": {
+            "type": [
+              "string",
+              "integer",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "jsonrpc",
+          "method",
+          "params"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "mep.session.subscribe": {
+      "summary": "Subscribe a session to a delta/event channel.",
+      "category": "stream",
+      "requires_actor": false,
+      "requires_context": false,
+      "aliases": [],
+      "request_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "jsonrpc": {
+            "const": "2.0"
+          },
+          "method": {
+            "enum": [
+              "mep.session.subscribe"
+            ]
+          },
+          "params": {
+            "type": "object",
+            "properties": {
+              "session_id": {
+                "type": "string"
+              },
+              "channel": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "session_id",
+              "channel"
+            ],
+            "additionalProperties": true
+          },
+          "id": {
+            "type": [
+              "string",
+              "integer",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "jsonrpc",
+          "method",
+          "params"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "mep.session.unsubscribe": {
+      "summary": "Remove a session subscription.",
+      "category": "stream",
+      "requires_actor": false,
+      "requires_context": false,
+      "aliases": [],
+      "request_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "jsonrpc": {
+            "const": "2.0"
+          },
+          "method": {
+            "enum": [
+              "mep.session.unsubscribe"
+            ]
+          },
+          "params": {
+            "type": "object",
+            "properties": {
+              "session_id": {
+                "type": "string"
+              },
+              "channel": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "session_id",
+              "channel"
+            ],
+            "additionalProperties": true
+          },
+          "id": {
+            "type": [
+              "string",
+              "integer",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "jsonrpc",
+          "method",
+          "params"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "mep.shared.envelope": {
+      "summary": "Build a shared-context multi-agent envelope.",
+      "category": "multi-agent",
+      "requires_actor": false,
+      "requires_context": true,
+      "aliases": [],
+      "request_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "jsonrpc": {
+            "const": "2.0"
+          },
+          "method": {
+            "enum": [
+              "mep.shared.envelope"
+            ]
+          },
+          "params": {
+            "type": "object",
+            "properties": {
+              "actor_ids": {
+                "type": [
+                  "array",
+                  "null"
+                ]
+              }
+            },
+            "required": [],
+            "additionalProperties": true
+          },
+          "id": {
+            "type": [
+              "string",
+              "integer",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "jsonrpc",
+          "method",
+          "params"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "mep.spec": {
+      "summary": "Return the protocol method registry and versioned beta surface.",
+      "category": "core",
+      "requires_actor": false,
+      "requires_context": false,
+      "aliases": [],
+      "request_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "jsonrpc": {
+            "const": "2.0"
+          },
+          "method": {
+            "enum": [
+              "mep.spec"
+            ]
+          },
+          "params": {
+            "type": "object",
+            "properties": {},
+            "required": [],
+            "additionalProperties": true
+          },
+          "id": {
+            "type": [
+              "string",
+              "integer",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "jsonrpc",
+          "method",
+          "params"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "mep.spec.markdown": {
+      "summary": "Return a markdown rendering of the public MEP method catalog.",
+      "category": "core",
+      "requires_actor": false,
+      "requires_context": false,
+      "aliases": [],
+      "request_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "jsonrpc": {
+            "const": "2.0"
+          },
+          "method": {
+            "enum": [
+              "mep.spec.markdown"
+            ]
+          },
+          "params": {
+            "type": "object",
+            "properties": {},
+            "required": [],
+            "additionalProperties": true
+          },
+          "id": {
+            "type": [
+              "string",
+              "integer",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "jsonrpc",
+          "method",
+          "params"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "mep.spec.schema": {
+      "summary": "Return JSON-schema-like request contracts for the protocol surface.",
+      "category": "core",
+      "requires_actor": false,
+      "requires_context": false,
+      "aliases": [],
+      "request_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "jsonrpc": {
+            "const": "2.0"
+          },
+          "method": {
+            "enum": [
+              "mep.spec.schema"
+            ]
+          },
+          "params": {
+            "type": "object",
+            "properties": {},
+            "required": [],
+            "additionalProperties": true
+          },
+          "id": {
+            "type": [
+              "string",
+              "integer",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "jsonrpc",
+          "method",
+          "params"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "mep.why": {
+      "summary": "Explain why an action is available.",
+      "category": "explain",
+      "requires_actor": true,
+      "requires_context": true,
+      "aliases": [],
+      "request_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "jsonrpc": {
+            "const": "2.0"
+          },
+          "method": {
+            "enum": [
+              "mep.why"
+            ]
+          },
+          "params": {
+            "type": "object",
+            "properties": {
+              "action_type": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "action_type"
+            ],
+            "additionalProperties": true
+          },
+          "id": {
+            "type": [
+              "string",
+              "integer",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "jsonrpc",
+          "method",
+          "params"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "mep.why_not": {
+      "summary": "Explain why an action is blocked or degraded.",
+      "category": "explain",
+      "requires_actor": true,
+      "requires_context": true,
+      "aliases": [],
+      "request_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "jsonrpc": {
+            "const": "2.0"
+          },
+          "method": {
+            "enum": [
+              "mep.why_not"
+            ]
+          },
+          "params": {
+            "type": "object",
+            "properties": {
+              "action_type": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "action_type"
+            ],
+            "additionalProperties": true
+          },
+          "id": {
+            "type": [
+              "string",
+              "integer",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "jsonrpc",
+          "method",
+          "params"
+        ],
+        "additionalProperties": false
+      }
+    }
+  }
+}
