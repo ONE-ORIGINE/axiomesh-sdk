@@ -179,4 +179,4 @@ The repository includes GitHub Actions workflows for CI and tagged publishing.
 - `.github/workflows/ci.yml` runs the test suite on pushes and pull requests
 - `.github/workflows/publish.yml` builds and publishes on tags like `v1.0.1`
 
-Before a real release, set your repository URLs in `pyproject.toml` and configure a PyPI Trusted Publisher for the GitHub repository.
+
