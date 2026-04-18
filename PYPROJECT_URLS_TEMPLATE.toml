@@ -1,5 +1,6 @@
 [project.urls]
-Homepage = "https://github.com/YOUR-ACCOUNT/AxiomMesh-SDK"
-Repository = "https://github.com/YOUR-ACCOUNT/AxiomMesh-SDK"
-Documentation = "https://github.com/YOUR-ACCOUNT/AxiomMesh-SDK#readme"
-Issues = "https://github.com/YOUR-ACCOUNT/AxiomMesh-SDK/issues"
+Homepage = "https://github.com/ONE-ORIGINE/axiomesh-sdk"
+Source = "https://github.com/ONE-ORIGINE/axiomesh-sdk"
+Issues = "https://github.com/ONE-ORIGINE/axiomesh-sdk/issues"
+Documentation = "https://github.com/ONE-ORIGINE/axiomesh-sdk#readme"
+Changelog = "https://github.com/ONE-ORIGINE/axiomesh-sdk/blob/main/CHANGELOG.md"
